@@ -1,0 +1,14 @@
+{
+  "name": "localsend-easy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "express": "^4.19.2",
+    "multer": "^2.1.1"
+  }
+}

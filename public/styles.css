@@ -1,0 +1,287 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --text: #15191f;
+  --muted: #68717d;
+  --line: #dce2e8;
+  --primary: #0f8b6f;
+  --primary-dark: #08705a;
+  --accent: #f0b44c;
+  --danger: #bd3f32;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.panel {
+  width: min(760px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.label {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.host {
+  max-width: 100%;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1.1;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  flex: 0 0 auto;
+  min-width: 72px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+.dropzone {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  place-items: center;
+  min-height: 360px;
+  padding: 32px;
+  border: 2px dashed #9aa9b7;
+  border-radius: 8px;
+  background: var(--panel);
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.dropzone.isDragging {
+  border-color: var(--primary);
+  background: #eefaf6;
+  transform: translateY(-1px);
+}
+
+.dropzone input {
+  display: none;
+}
+
+.dropText {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+}
+
+.dropText strong {
+  font-size: clamp(36px, 9vw, 76px);
+  line-height: 1;
+}
+
+.dropText span {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.dropText small {
+  color: #7d8792;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 180px));
+  gap: 12px;
+  width: min(100%, 380px);
+}
+
+.actions button {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.actions button:last-child {
+  background: var(--text);
+}
+
+.progressWrap,
+.linkCard {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.progressMeta,
+.linkTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.linkTop span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.linkMeta {
+  flex: 0 0 auto;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.progress {
+  height: 10px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8edf2;
+}
+
+.progress div {
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+  transition: width 120ms ease;
+}
+
+.links {
+  display: grid;
+  gap: 12px;
+}
+
+.history {
+  display: grid;
+  gap: 10px;
+}
+
+.sectionTitle {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.linkUrl {
+  display: block;
+  margin: 10px 0 14px;
+  color: var(--primary-dark);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.linkActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.linkActions button,
+.linkActions a {
+  display: grid;
+  min-height: 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: #eef2f5;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.linkActions .copy {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.error {
+  color: var(--danger);
+}
+
+.success {
+  color: var(--primary-dark);
+}
+
+@media (max-width: 560px) {
+  .app {
+    align-items: start;
+    padding: 16px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .status {
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropzone {
+    min-height: 320px;
+    padding: 24px 16px;
+  }
+
+  .actions,
+  .linkActions {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .linkTop {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .linkMeta {
+    text-align: left;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalSend Easy</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div class="topbar">
+          <div>
+            <div class="label">本机地址</div>
+            <button class="host" id="hostButton" type="button">读取中...</button>
+          </div>
+          <div class="status" id="status">就绪</div>
+        </div>
+
+        <div class="dropzone" id="dropzone">
+          <input id="fileInput" type="file" multiple />
+          <input id="folderInput" type="file" webkitdirectory multiple />
+          <div class="dropText">
+            <strong>拖到这里</strong>
+            <span>或直接选择</span>
+            <small>Cmd+V / Ctrl+V 粘贴文件</small>
+            <small>单文件最大 4 GiB，最多 1000 个文件</small>
+          </div>
+          <div class="actions">
+            <button type="button" id="pickFiles">选文件</button>
+            <button type="button" id="pickFolder">选文件夹</button>
+          </div>
+        </div>
+
+        <div class="progressWrap" id="progressWrap" hidden>
+          <div class="progressMeta">
+            <span id="progressName">上传中</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress">
+            <div id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="links" id="links"></div>
+        <section class="history" id="history" hidden>
+          <div class="sectionTitle">最近上传</div>
+          <div class="links" id="historyLinks"></div>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
