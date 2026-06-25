@@ -1,5 +1,107 @@
 # LocalSend Easy
 
+An easier LAN file sharing web app. Open the page, upload files, copy the link, and phones or computers on the same local network can download them.
+
+## Features
+
+- Upload a single file
+- Upload multiple files at once
+- Upload folders
+- Drag and drop uploads
+- Paste copied files into the page with `Cmd+V` / `Ctrl+V`
+- Automatically detects the local LAN IP address
+- Uses port `53317` by default
+- If the port is already in use, automatically tries following ports such as `53318`, `53319`, and so on
+- Automatically generates download links
+- Keeps the latest 10 upload records
+- Supports access from phones and computers
+
+## Installation
+
+```bash
+npm install
+```
+
+## Start
+
+```bash
+npm start
+```
+
+After startup, the terminal will show access URLs, for example:
+
+```text
+LocalSend Easy: http://10.0.10.125:53317
+Local: http://localhost:53317
+```
+
+Devices on the same LAN can open the URL after `LocalSend Easy`.
+
+## Usage
+
+1. Open the web page
+2. Select files, select a folder, drag files in, or paste copied files
+3. Copy the generated link after the upload finishes
+4. Open the link on a phone or another computer to download
+
+Generated links look like this:
+
+```text
+http://10.0.10.125:53317/usagi-fe529e1a
+```
+
+Here, `usagi` comes from the file name, and `fe529e1a` is the automatically generated 8-character hash.
+
+## Hash Rules
+
+During upload, the full file content is read to generate an 8-character hash.
+
+For a single-file upload, the hash is based on the file content.
+
+For multiple-file or folder uploads, the hash combines the following information:
+
+- File path
+- File content
+
+This means:
+
+- Same file name and same content produce the same hash when uploaded again
+- Same file name with changed content produces a new hash when uploaded again
+- Any file path or content change in a multi-file or folder upload produces a new hash
+
+Computing the hash requires reading the uploaded file completely. Large files require one extra disk read, so this may be slightly slower than generating a hash only from the file name or timestamp.
+
+## Multiple Files and Folders
+
+When uploading multiple files or a folder, the server automatically packages them into a zip file and generates one download link.
+
+## Upload Limits
+
+Current limits:
+
+- Maximum single file size: `4 GiB`
+- Maximum `1000` files per upload
+- Maximum file size for each file in a multi-file or folder upload: `4 GiB`
+
+Chunked uploads and resumable uploads are not supported yet. If an upload is interrupted, it needs to be uploaded again.
+
+Large files are first written fully to disk and then read fully again to compute the content hash. Multiple-file or folder uploads are also packaged into a zip file, so processing takes longer and requires enough local disk space.
+
+## History
+
+The page shows the latest 10 upload records.
+
+History records and uploaded files are stored locally in the `storage/` directory. After restarting the service, the latest 10 records can still be used.
+
+## Notes
+
+- Sender and receiver must be on the same local network
+- The computer firewall must allow LAN access to the local port
+- If the browser restricts clipboard permissions, clicking copy will automatically select the link text so it can be copied manually
+- The `storage/` directory is not committed to git
+
+## 中文说明
+
 一个更简单的局域网文件分享网页。打开页面，上传文件，复制链接，同一局域网内的手机或电脑即可访问下载。
 
 ## 功能
