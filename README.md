@@ -1,5 +1,13 @@
 # LocalSend Easy
 
+<p align="center">
+  <a href="#english">English</a>
+  ·
+  <a href="#中文说明">中文说明</a>
+</p>
+
+<a id="english"></a>
+
 An easier LAN file sharing web app. Open the page, upload files, copy the link, and phones or computers on the same local network can download them.
 
 ## Features
