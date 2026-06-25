@@ -3,7 +3,7 @@
 <p align="center">
   <a href="#english">English</a>
   ·
-  <a href="#中文说明">中文说明</a>
+  <a href="#中文">中文</a>
 </p>
 
 <a id="english"></a>
@@ -108,7 +108,7 @@ History records and uploaded files are stored locally in the `storage/` director
 - If the browser restricts clipboard permissions, clicking copy will automatically select the link text so it can be copied manually
 - The `storage/` directory is not committed to git
 
-## 中文说明
+## 中文
 
 一个更简单的局域网文件分享网页。打开页面，上传文件，复制链接，同一局域网内的手机或电脑即可访问下载。
 
